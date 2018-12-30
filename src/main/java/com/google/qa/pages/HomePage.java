@@ -10,5 +10,10 @@ public class HomePage extends TestBase {
 		
 		PageFactory.initElements(driver, this);
 	}
+	
+	public String getTtile() {
+		
+		return driver.getTitle();
+	}
 
 }

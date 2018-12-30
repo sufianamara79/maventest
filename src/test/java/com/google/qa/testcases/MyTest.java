@@ -26,6 +26,9 @@ public class MyTest extends TestBase{
 	@Test
 	public void test() {
 		HomePage page = new HomePage();
+		
+	 
+	 assertEquals("title wrong", "amazon", page.getTtile());
 	}
 
 }
