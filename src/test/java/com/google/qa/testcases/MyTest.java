@@ -33,7 +33,7 @@ public class MyTest extends TestBase{
 		page.Search("real madrid");
 		
 		LuxDetails details = new LuxDetails();
-		details.setTeamID(6);
+		details.setTeamID(7);
 		details.setName("real");
 		details.setRank(1);
 		

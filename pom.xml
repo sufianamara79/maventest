@@ -52,7 +52,13 @@
         <includes>
         <include>**/com.*MyTest.java</include>
         </includes>
-        </resource>    
+        </resource>   
+        <resource>
+             <directory>src/main/resources</directory>
+             <includes>
+                 <include>**/*.*</include>
+             </includes>
+         </resource> 
      </resources>
 
     <plugins>
