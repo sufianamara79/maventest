@@ -26,6 +26,8 @@ public class testmaster extends TestBase{
 	@Test
 	public void test() {
 		HomePage page = new HomePage();
+		
+	    assertEquals("go  have coffe)", true, 2);
 	}
 
 }

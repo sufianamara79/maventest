@@ -26,9 +26,10 @@ public class MyTest extends TestBase{
 	@Test
 	public void test() {
 		HomePage page = new HomePage();
+		page.Search("real madrid");
 		
 	 
-	 assertEquals("title wrong", "amazon", page.getTtile());
+	    assertEquals("title wrong", "real madrid - Google Search", page.getTtile());
 	}
 
 }
