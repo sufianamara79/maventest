@@ -29,7 +29,7 @@ public class MyTest extends TestBase{
 		page.Search("real madrid");
 		
 	 
-	    assertEquals("title wrong", "real madrid - Google Search", page.getTtile());
+	    assertEquals("title wrong", "barcelona - Google Search", page.getTtile());
 	}
 
 }
