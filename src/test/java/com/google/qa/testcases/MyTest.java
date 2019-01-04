@@ -128,8 +128,9 @@ public class MyTest extends TestBase{
             		 break;
             	 }
             }
-            System.out.println();
+           
         }
+        System.out.println(searchQ);
         
        // page.Search(searchQ);
         
