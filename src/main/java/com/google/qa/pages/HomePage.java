@@ -15,6 +15,9 @@ public class HomePage extends TestBase {
 	@FindBy(how = How.NAME, using = "btnK")
     private WebElement btnSearch;
 	
+	@FindBy(how = How.XPATH, using = "//h3[text()=\"sample Excel spreadsheet - Microsoft\"]/..")
+    private WebElement lnk;
+	
 	public HomePage() {
 		
 		PageFactory.initElements(driver, this);
@@ -29,6 +32,11 @@ public class HomePage extends TestBase {
 		
 		searchBox.sendKeys(text);
 		btnSearch.submit();
+	}
+	
+	public void Download() {
+			
+			lnk.click();
 	}
 
 }

@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 public class MyTest extends TestBase{
-	 public static final String SAMPLE_XLSX_FILE_PATH = "/Users/sufianamara/Downloads/Financial-Sample.xlsx" ;
+	 public static final String SAMPLE_XLSX_FILE_PATH = "/Users/sufianamara/Downloads/Financial Sample.xlsx" ;
 	 
 	public MyTest() {
 		super();
@@ -99,9 +99,13 @@ public class MyTest extends TestBase{
 //	}
 	
 	@Test
-	public void ReadExcelTest() throws EncryptedDocumentException, InvalidFormatException, IOException {
+	public void ReadExcelTest() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
 		HomePage page = new HomePage();
 		//page.Search("real madrid");
+		
+		page.Download();
+		
+		 Thread.sleep(2000);
 		
 		String searchQ = null;
 		
@@ -127,7 +131,7 @@ public class MyTest extends TestBase{
             System.out.println();
         }
         
-        page.Search(searchQ);
+       // page.Search(searchQ);
         
         assertEquals("title wrong", "Mary", page.getTtile());
 		
