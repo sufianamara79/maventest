@@ -75,11 +75,11 @@ public class MyTest extends TestBase{
 		
 		all = criteria.list();
 		
-	    assertEquals("title wrong", "real", details.getName());
+//	    assertEquals("title wrong", "real", details.getName());
 	   
 	    
 	    session.evict(details);
-	    details.setName("Mary");
+	    details.setName("Mary 2");
 	     
 	    session.merge(details);
 	    
@@ -95,7 +95,7 @@ public class MyTest extends TestBase{
 		
 		details = session.get(LuxDetails.class, 3);
 		
-		assertEquals("title wrong", "Mary", details.getName());
+		assertEquals("title wrong", "Mary 2", details.getName());
 	}
 	
 	@Test
