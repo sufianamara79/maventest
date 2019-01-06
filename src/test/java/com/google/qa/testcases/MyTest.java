@@ -39,64 +39,64 @@ public class MyTest extends TestBase{
 		
 	}											 			
 	
-//	@Test
-//	public void test() {
-//		HomePage page = new HomePage();
-//		page.Search("real madrid");
-//		
-//		LuxDetails details = new LuxDetails();
-//		details.setTeamID(7);
-//		details.setName("real");
-//		details.setRank(1);
-//		
-//		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-//	 
-//		Session session = sessionFactory.openSession();
-//		
-//		session.beginTransaction();
-//		
-//		session.save(details);
-//		
-//		session.getTransaction().commit();
-//		
-//		session.close();
-//		
-//		session = sessionFactory.openSession();
-//		
-//		session.beginTransaction();
-//		
-//		details = null;
-//		
-//		details = session.get(LuxDetails.class, 3);
-//		
-//		List<LuxDetails> all = new ArrayList<LuxDetails>();
-//		
-//		Criteria criteria  = session.createCriteria(LuxDetails.class);
-//		
-//		all = criteria.list();
-//		
-//	    assertEquals("title wrong", "real", details.getName());
-//	   
-//	    
-//	    session.evict(details);
-//	    details.setName("Mary");
-//	     
-//	    session.merge(details);
-//	    
-//		session.getTransaction().commit();
-//		
-//		session.close();
-//		
-//		session = sessionFactory.openSession();
-//		
-//		session.beginTransaction();
-//		
-//		details = null;
-//		
-//		details = session.get(LuxDetails.class, 3);
-//		
-//		assertEquals("title wrong", "Mary", details.getName());
-//	}
+	@Test
+	public void test() {
+		HomePage page = new HomePage();
+		page.Search("real madrid");
+		
+		LuxDetails details = new LuxDetails();
+		details.setTeamID(11);
+		details.setName("real 2");
+		details.setRank(1);
+		
+		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+	 
+		Session session = sessionFactory.openSession();
+		
+		session.beginTransaction();
+		
+		session.save(details);
+		
+		session.getTransaction().commit();
+		
+		session.close();
+		
+		session = sessionFactory.openSession();
+		
+		session.beginTransaction();
+		
+		details = null;
+		
+		details = session.get(LuxDetails.class, 3);
+		
+		List<LuxDetails> all = new ArrayList<LuxDetails>();
+		
+		Criteria criteria  = session.createCriteria(LuxDetails.class);
+		
+		all = criteria.list();
+		
+	    assertEquals("title wrong", "real", details.getName());
+	   
+	    
+	    session.evict(details);
+	    details.setName("Mary");
+	     
+	    session.merge(details);
+	    
+		session.getTransaction().commit();
+		
+		session.close();
+		
+		session = sessionFactory.openSession();
+		
+		session.beginTransaction();
+		
+		details = null;
+		
+		details = session.get(LuxDetails.class, 3);
+		
+		assertEquals("title wrong", "Mary", details.getName());
+	}
 	
 	@Test
 	public void ReadExcelTest() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
@@ -134,7 +134,7 @@ public class MyTest extends TestBase{
         
        // page.Search(searchQ);
         
-        assertEquals("title wrong", "Mary", page.getTtile());
+        assertEquals("title wrong", "sample excel file download - Google Search", page.getTtile());
 		
 
 	}
