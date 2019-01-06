@@ -42,7 +42,7 @@ public class MyTest extends TestBase{
 	@Test
 	public void test() {
 		HomePage page = new HomePage();
-		page.Search("real madrid");
+//		page.Search("real madrid");
 		
 		LuxDetails details = new LuxDetails();
 		details.setTeamID(11);
