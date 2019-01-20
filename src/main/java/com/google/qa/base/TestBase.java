@@ -78,7 +78,12 @@ public class TestBase {
         
         dbtester.setDataSet(dataSet);
         
-        dbtester.onSetup();
+        try {
+			dbtester.onSetup();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
         
 		String browserName = prop.getProperty("browser");
