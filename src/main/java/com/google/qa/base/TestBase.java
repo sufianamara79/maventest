@@ -50,7 +50,7 @@ public class TestBase {
 	// Load the data which will be inserted for the test
 	protected IDataSet getDataSet() throws Exception{
 			loadedDataSet = 
-		                 new FlatXmlDataSetBuilder().build(new File("src/main/resources/input.xml"));
+		                 new FlatXmlDataSetBuilder().build(new File("/Users/sufianamara/eclipse-workspace/maventest/src/main/resources/input.xml"));
 			return loadedDataSet;
 		}
 	
