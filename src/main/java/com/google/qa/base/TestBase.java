@@ -56,22 +56,22 @@ public class TestBase {
 	
 	public void init() throws Exception {
 		
-		// initialize your database connection here
-        IDatabaseConnection connection = this.getConnection();
-        // ...
-
-        // initialize your dataset here
-        IDataSet dataSet = this.getDataSet();
-        // ...
-
-        try
-        {
-            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
-        }
-        finally
-        {
-            connection.close();
-        }
+//		// initialize your database connection here
+//        IDatabaseConnection connection = this.getConnection();
+//        // ...
+//
+//        // initialize your dataset here
+//        IDataSet dataSet = this.getDataSet();
+//        // ...
+//
+//        try
+//        {
+//            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
+//        }
+//        finally
+//        {
+//            connection.close();
+//        }
         
 		String browserName = prop.getProperty("browser");
 		
