@@ -7,6 +7,7 @@ import org.junit.runners.Suite;
 
 @Suite.SuiteClasses({
    MyTest.class,
+   testmaster.class
   
 })
 
