@@ -18,7 +18,12 @@ public class testmaster extends TestBase{
 	
 	@Before
 	public void SetUp() {
-		init();
+		try {
+			init();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}

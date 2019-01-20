@@ -1,10 +1,21 @@
 package com.google.qa.base;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
+import org.dbunit.DatabaseUnitException;
+import org.dbunit.database.DatabaseConnection;
+import org.dbunit.database.IDatabaseConnection;
+import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+import org.dbunit.operation.DatabaseOperation;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -12,6 +23,7 @@ public class TestBase {
 	
 	public static WebDriver driver;
 	public static Properties prop = new Properties();
+	private IDataSet loadedDataSet;
 	
 	public TestBase() {
 		InputStream input = null;
@@ -29,7 +41,38 @@ public class TestBase {
 		} 
     }
 	
-	public static void init() {
+	protected IDatabaseConnection getConnection() throws Exception{
+			Class driverClass = Class.forName("org.postgresql.Driver");
+			Connection jdbcConnection = 
+			      DriverManager.getConnection("jdbc:postgresql://localhost:5432/Teams", "postgres", "kingkong7");
+			return new DatabaseConnection(jdbcConnection);
+		}
+	// Load the data which will be inserted for the test
+	protected IDataSet getDataSet() throws Exception{
+			loadedDataSet = 
+		                 new FlatXmlDataSetBuilder().build(new File("src/main/resources/input.xml"));
+			return loadedDataSet;
+		}
+	
+	public void init() throws Exception {
+		
+		// initialize your database connection here
+        IDatabaseConnection connection = this.getConnection();
+        // ...
+
+        // initialize your dataset here
+        IDataSet dataSet = this.getDataSet();
+        // ...
+
+        try
+        {
+            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
+        }
+        finally
+        {
+            connection.close();
+        }
+        
 		String browserName = prop.getProperty("browser");
 		
 		if (browserName.equals("chrome")) {
