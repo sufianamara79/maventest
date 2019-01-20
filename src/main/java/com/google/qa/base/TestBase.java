@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,13 +21,16 @@ import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class TestBase {
 	
-	public static WebDriver driver;
+   public static WebDriver driver;
 	public static Properties prop = new Properties();
 	private IDataSet loadedDataSet;
 	 private IDatabaseTester dbtester;
+	
 	
 	public TestBase() {
 		InputStream input = null;
@@ -84,13 +88,20 @@ public class TestBase {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		
+		String hubUrl = "http://192.168.178.95:4444/wd/hub";
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		System.out.println("Starting chrome on grid");
         
+		capabilities.setBrowserName(DesiredCapabilities.chrome().getBrowserName());
         
 		String browserName = prop.getProperty("browser");
 		
 		if (browserName.equals("chrome")) {
-			driver = new ChromeDriver();
+			
 		}
+		
+		driver = (new RemoteWebDriver(new URL(hubUrl), capabilities));
 		
 		driver.get(prop.getProperty("url"));
 	}
