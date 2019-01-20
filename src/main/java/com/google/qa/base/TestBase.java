@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import org.dbunit.DatabaseUnitException;
+import org.dbunit.IDatabaseTester;
+import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
@@ -24,6 +26,7 @@ public class TestBase {
 	public static WebDriver driver;
 	public static Properties prop = new Properties();
 	private IDataSet loadedDataSet;
+	 private IDatabaseTester dbtester;
 	
 	public TestBase() {
 		InputStream input = null;
@@ -57,7 +60,7 @@ public class TestBase {
 	public void init() throws Exception {
 		
 		// initialize your database connection here
-        IDatabaseConnection connection = this.getConnection();
+		dbtester = new JdbcDatabaseTester("org.postgresql.Driver","jdbc:postgresql://localhost:5432/Teams","postgres","kingkong7");
         // ...
 
         // initialize your dataset here
@@ -65,13 +68,17 @@ public class TestBase {
         // ...
 
         
-        try { 
-            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet); 
-    } catch (Exception e) { 
-            e.printStackTrace(); 
-    }
+//        try { 
+//            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet); 
+//    } catch (Exception e) { 
+//            e.printStackTrace(); 
+//    }
         
-            connection.close();
+//            connection.close();
+        
+        dbtester.setDataSet(dataSet);
+        
+        dbtester.onSetup();
         
         
 		String browserName = prop.getProperty("browser");
