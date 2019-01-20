@@ -59,31 +59,31 @@ public class TestBase {
 	
 	public void init() throws Exception {
 		
-		// initialize your database connection here
-		dbtester = new JdbcDatabaseTester("org.postgresql.Driver","jdbc:postgresql://localhost:5432/Teams","postgres","kingkong7");
-        // ...
-
-        // initialize your dataset here
-        IDataSet dataSet = this.getDataSet();
-        // ...
-
-        
-//        try { 
-//            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet); 
-//    } catch (Exception e) { 
-//            e.printStackTrace(); 
-//    }
-        
-//            connection.close();
-        
-        dbtester.setDataSet(dataSet);
-        
-        try {
-			dbtester.onSetup();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		// initialize your database connection here
+//		dbtester = new JdbcDatabaseTester("org.postgresql.Driver","jdbc:postgresql://localhost:5432/Teams","postgres","kingkong7");
+//        // ...
+//
+//        // initialize your dataset here
+//        IDataSet dataSet = this.getDataSet();
+//        // ...
+//
+//        
+////        try { 
+////            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet); 
+////    } catch (Exception e) { 
+////            e.printStackTrace(); 
+////    }
+//        
+////            connection.close();
+//        
+//        dbtester.setDataSet(dataSet);
+//        
+//        try {
+//			dbtester.onSetup();
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
         
         
 		String browserName = prop.getProperty("browser");
