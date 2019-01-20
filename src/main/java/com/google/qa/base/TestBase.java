@@ -45,7 +45,7 @@ public class TestBase {
 			Class driverClass = Class.forName("org.postgresql.Driver");
 			Connection jdbcConnection = 
 			      DriverManager.getConnection("jdbc:postgresql://localhost:5432/Teams", "postgres", "kingkong7");
-			return new DatabaseConnection(jdbcConnection);
+			return new DatabaseConnection(jdbcConnection);      
 		}
 	// Load the data which will be inserted for the test
 	protected IDataSet getDataSet() throws Exception{
