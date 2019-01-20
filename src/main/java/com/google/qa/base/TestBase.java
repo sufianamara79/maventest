@@ -64,14 +64,11 @@ public class TestBase {
         IDataSet dataSet = this.getDataSet();
         // ...
 
-        try
-        {
+        
             DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
-        }
-        finally
-        {
+        
             connection.close();
-        }
+        
         
 		String browserName = prop.getProperty("browser");
 		
