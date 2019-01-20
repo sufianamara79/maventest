@@ -65,7 +65,11 @@ public class TestBase {
         // ...
 
         
-            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
+        try { 
+            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet); 
+    } catch (Exception e) { 
+            e.printStackTrace(); 
+    }
         
             connection.close();
         
