@@ -63,45 +63,45 @@ public class TestBase {
 	
 	public void init() throws Exception {
 		
-//		// initialize your database connection here
-//		dbtester = new JdbcDatabaseTester("org.postgresql.Driver","jdbc:postgresql://localhost:5432/Teams","postgres","kingkong7");
-//        // ...
-//
-//        // initialize your dataset here
-//        IDataSet dataSet = this.getDataSet();
-//        // ...
-//
-//        
-////        try { 
-////            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet); 
-////    } catch (Exception e) { 
-////            e.printStackTrace(); 
-////    }
-//        
-////            connection.close();
-//        
-//        dbtester.setDataSet(dataSet);
-//        
-//        try {
-//			dbtester.onSetup();
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		// initialize your database connection here
+		dbtester = new JdbcDatabaseTester("org.postgresql.Driver","jdbc:postgresql://localhost:5432/Teams","postgres","kingkong7");
+        // ...
+
+        // initialize your dataset here
+        IDataSet dataSet = this.getDataSet();
+        // ...
+
+        
+//        try { 
+//            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet); 
+//    } catch (Exception e) { 
+//            e.printStackTrace(); 
+//    }
+        
+//            connection.close();
+        
+        dbtester.setDataSet(dataSet);
+        
+        try {
+			dbtester.onSetup();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	}
 		
-		String hubUrl = "http://192.168.178.95:4444/wd/hub";
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		System.out.println("Starting chrome on grid");
-        
-		capabilities.setBrowserName(DesiredCapabilities.chrome().getBrowserName());
-        
+//		String hubUrl = "http://192.168.178.95:4444/wd/hub";
+//		DesiredCapabilities capabilities = new DesiredCapabilities();
+//		System.out.println("Starting chrome on grid");
+//        
+//		capabilities.setBrowserName(DesiredCapabilities.chrome().getBrowserName());
+//        
 		String browserName = prop.getProperty("browser");
 		
 		if (browserName.equals("chrome")) {
-			
+			driver = new ChromeDriver();
 		}
 		
-		driver = (new RemoteWebDriver(new URL(hubUrl), capabilities));
+//		driver = (new RemoteWebDriver(new URL(hubUrl), capabilities));
 		
 		driver.get(prop.getProperty("url"));
 	}
