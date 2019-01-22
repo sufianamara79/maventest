@@ -77,7 +77,7 @@ public class MyTest extends TestBase{
 		
 		all = criteria.list();
 		
-//	    assertEquals("title wrong", "real", details.getName());
+	    assertEquals("title wrong", "real", "wrong");
 	   
 	    
 //	    session.evict(details);

@@ -8,6 +8,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalTime;
 import java.util.Properties;
 
 import org.dbunit.DatabaseUnitException;
@@ -19,10 +20,16 @@ import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
+import org.junit.Rule;
+import org.junit.rules.TestName;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.apache.commons.io.FileUtils;
 
 public class TestBase {
 	
@@ -30,6 +37,9 @@ public class TestBase {
 	public static Properties prop = new Properties();
 	private IDataSet loadedDataSet;
 	 private IDatabaseTester dbtester;
+	 private static LocalTime timestamp = LocalTime.now();
+
+     @Rule public TestName name = new TestName();
 	
 	
 	public TestBase() {
@@ -100,6 +110,30 @@ public class TestBase {
 		if (browserName.equals("chrome")) {
 			driver = new ChromeDriver();
 		}
+		
+		File localScreenshots = new File(new File("target"), "screenshots");
+
+        File screenshot = new File(localScreenshots, this.name.getMethodName() + "_" + timestamp.getHour() + "." + timestamp.getMinute() + ".png");   
+
+        try {
+
+               FileUtils.moveFile(((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE), screenshot);
+
+        } catch (WebDriverException e) {
+
+              
+
+               e.printStackTrace();
+
+              
+
+        } catch (IOException e) {
+
+       
+
+               e.printStackTrace();
+
+        }
 		
 //		driver = (new RemoteWebDriver(new URL(hubUrl), capabilities));
 		
