@@ -1,6 +1,7 @@
 package com.google.qa.base;
 
 import java.io.File;
+import org.apache.commons.codec.binary.Base64;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,6 +15,7 @@ import java.util.Properties;
 import org.dbunit.DatabaseUnitException;
 import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
+import org.dbunit.database.DatabaseConfig;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
@@ -74,7 +76,13 @@ public class TestBase {
 	public void init() throws Exception {
 		
 		// initialize your database connection here
-		dbtester = new JdbcDatabaseTester("org.postgresql.Driver","jdbc:postgresql://localhost:5432/Teams","postgres","kingkong7");
+//		dbtester = new JdbcDatabaseTester("org.postgresql.Driver","jdbc:postgresql://localhost:5432/Teams","postgres","kingkong7");
+//		dbtester.setSchema("pvt");
+		
+		IDatabaseConnection connection = this.getConnection();
+		connection.getConfig().setFeature(DatabaseConfig.FEATURE_QUALIFIED_TABLE_NAMES, true);
+		
+		
         // ...
 
         // initialize your dataset here
@@ -82,22 +90,22 @@ public class TestBase {
         // ...
 
         
-//        try { 
-//            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet); 
-//    } catch (Exception e) { 
-//            e.printStackTrace(); 
-//    }
+        try { 
+           DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet); 
+    } catch (Exception e) { 
+           e.printStackTrace(); 
+    }
         
-//            connection.close();
+           connection.close();
+//        
+//        dbtester.setDataSet(dataSet);
         
-        dbtester.setDataSet(dataSet);
-        
-        try {
-			dbtester.onSetup();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-	}
+//        try {
+//			dbtester.onSetup();
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//	}
 		
 //		String hubUrl = "http://192.168.178.95:4444/wd/hub";
 //		DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -138,6 +146,13 @@ public class TestBase {
 //		driver = (new RemoteWebDriver(new URL(hubUrl), capabilities));
 		
 		driver.get(prop.getProperty("url"));
+	}
+	
+	public void encode() {
+		
+		
+		
+		
 	}
 
 }
