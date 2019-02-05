@@ -44,9 +44,10 @@ public class MyTest extends TestBase{
 	@Test
 	public void test() {
 		HomePage page = new HomePage();
+		screenShot();
      	page.Search(System.getenv("USERNAME"));
      	
-     	screenShot();
+     	
 		System.out.println(System.getenv("USERNAME"));
 		
 //		LuxDetails details = new LuxDetails();
