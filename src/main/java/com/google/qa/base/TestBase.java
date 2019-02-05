@@ -119,6 +119,15 @@ public class TestBase {
 			driver = new ChromeDriver();
 		}
 		
+		
+		
+//		driver = (new RemoteWebDriver(new URL(hubUrl), capabilities));
+		
+		driver.get(prop.getProperty("url"));
+	}
+	
+	public void screenShot() {
+		
 		File localScreenshots = new File(new File("target"), "screenshots");
 
         File screenshot = new File(localScreenshots, this.name.getMethodName() + "_" + timestamp.getHour() + "." + timestamp.getMinute() + ".png");   
@@ -142,15 +151,6 @@ public class TestBase {
                e.printStackTrace();
 
         }
-		
-//		driver = (new RemoteWebDriver(new URL(hubUrl), capabilities));
-		
-		driver.get(prop.getProperty("url"));
-	}
-	
-	public void encode() {
-		
-		
 		
 		
 	}
