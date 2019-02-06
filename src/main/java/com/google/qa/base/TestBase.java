@@ -49,7 +49,7 @@ public class TestBase {
 		try {
 			
 
-			input = new FileInputStream("/Users/sufianamara/eclipse-workspace/maventest/src/main/java/com/google/qa/config/config.properties");
+			input = new FileInputStream("./src/main/java/com/google/qa/config/config.properties");
 
 			// load a properties file
 			prop.load(input);
